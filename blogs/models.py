@@ -21,7 +21,7 @@ STATUS_CHOICES = (
 )
 
 class Blog(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=150,unique=True, blank=True)
     # slug = AutoSlugField(populate_from='title', unique=True, default=None)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -35,4 +35,4 @@ class Blog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title 
