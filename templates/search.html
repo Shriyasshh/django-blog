@@ -1,14 +1,13 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
 
-
-<h3 class="text-uppercase text-warning" style="letter-spacing: 2px">
-    Category {{category.category_name}}
+<h3 class=" text-warning" style="letter-spacing: 2px">
+    Search Result For: {{keyword}}
 </h3>
 <div class="row mb-2">
-    {% if post %}
+    {% if blogs %}
 
-    {% for post in post %}
+    {% for post in blogs %}
     <div class="col-md-6">
         <div class="card border-0">
             <div class="card-body">
@@ -34,4 +33,5 @@
     {% endif %}
 
 </div>
-{% endblock %}
+
+{% endblock content %}
