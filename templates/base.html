@@ -23,15 +23,23 @@
                 <div class="col-4">
                     <form action="{% url 'search' %}" method="get" class="d-flex">
                         <input class="form-control" type="text" name="keyword" placeholder="Search Blogs"
-                            aria-label="Enter search term..." aria-describedby="button-search" required value="{{keyword}}" />
+                            aria-label="Enter search term..." aria-describedby="button-search" required
+                            value="{{keyword}}" />
                         &nbsp;
                         <button class="btn  btn-warning" id="button-search" type="submit">Go!</button>
                     </form>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-sm btn-warning" href="#">Login</a>
+                    {% if not user.is_authenticated %}
+                    <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a>
                     &nbsp;
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Register</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'signin' %}">Signin</a>
+                    {% else %}
+                    <span class="navbar-text me-3 fw-bold text-black  ">Welcome! {{user}}</span>
+                    &nbsp;
+                    &nbsp;
+                    <a class="btn btn-sm btn-outline-secondary " href="{% url 'logout' %}">Signout</a>
+                    {% endif %}
                 </div>
             </div>
         </header>
