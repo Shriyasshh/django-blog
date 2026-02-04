@@ -11,6 +11,7 @@
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet" />
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -22,23 +23,20 @@
                 </div>
                 <div class="col-4">
                     <form action="{% url 'search' %}" method="get" class="d-flex">
-                        <input class="form-control" type="text" name="keyword" placeholder="Search Blogs"
+                        <input class="form-control m-1" type="text" name="keyword" placeholder="Search Blogs"
                             aria-label="Enter search term..." aria-describedby="button-search" required
                             value="{{keyword}}" />
-                        &nbsp;
-                        <button class="btn  btn-warning" id="button-search" type="submit">Go!</button>
+
+                        <button class="btn  btn-warning m-1" id="button-search" type="submit">Go!</button>
                     </form>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     {% if not user.is_authenticated %}
-                    <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a>
-                    &nbsp;
-                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'signin' %}">Signin</a>
+                    <a class="btn btn-sm btn-warning m-1" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-sm btn-outline-secondary m-1" href="{% url 'signin' %}">Signin</a>
                     {% else %}
-                    <span class="navbar-text me-3 fw-bold text-black  ">Welcome! {{user}}</span>
-                    &nbsp;
-                    &nbsp;
-                    <a class="btn btn-sm btn-outline-secondary " href="{% url 'logout' %}">Signout</a>
+                    <span class="btn btn-sm btn-outline-secondary "><a href="{% url 'dashboard' %}" class="btn-outline-secondary m-1">Dashboard</span>
+                    <a class="btn btn-sm btn-outline-secondary m-1" href="{% url 'logout' %}">Signout</a>
                     {% endif %}
                 </div>
             </div>
